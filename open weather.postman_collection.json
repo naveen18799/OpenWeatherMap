@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "d70c7e1b-896b-47d2-b83e-e03283c801a4",
+		"name": "open weather",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "29123027",
+		"_collection_link": "https://lively-satellite-657122.postman.co/workspace/New-Team-Workspace~2c5bda96-6cba-44c7-a22d-5ce864dfe1b6/collection/29123027-d70c7e1b-896b-47d2-b83e-e03283c801a4?action=share&source=collection_link&creator=29123027"
+	},
+	"item": [
+		{
+			"name": "ln",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify Latitude and Longitude\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.coord.lat).to.eql(51.51);\r",
+							"    pm.expect(jsonData.coord.lon).to.eql(-0.13);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22\n",
+					"protocol": "https",
+					"host": [
+						"samples",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "London,uk"
+						},
+						{
+							"key": "appid",
+							"value": "b6907d289e10d714a6e88b30761fae22\n"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ny",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify Temperature Range\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.main.temp).to.be.within(270, 310); \r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://samples.openweathermap.org/data/2.5/weather?q=New%20York,us&appid=b6907d289e10d714a6e88b30761fae22\n",
+					"protocol": "https",
+					"host": [
+						"samples",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "New%20York,us"
+						},
+						{
+							"key": "appid",
+							"value": "b6907d289e10d714a6e88b30761fae22\n"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tk",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify Weather Conditions\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var expectedConditions = [\"Clear\", \"Clouds\", \"Rain\"];\r",
+							"    pm.expect(expectedConditions).to.include(jsonData.weather[0].main);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://samples.openweathermap.org/data/2.5/weather?q=Tokyo,jp&appid=b6907d289e10d714a6e88b30761fae22\n",
+					"protocol": "https",
+					"host": [
+						"samples",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Tokyo,jp"
+						},
+						{
+							"key": "appid",
+							"value": "b6907d289e10d714a6e88b30761fae22\n"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "syd",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify Humidity Level\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.main.humidity).to.be.below(80); \r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://samples.openweathermap.org/data/2.5/weather?q=Sydney,au&appid=b6907d289e10d714a6e88b30761fae22\n",
+					"protocol": "https",
+					"host": [
+						"samples",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Sydney,au"
+						},
+						{
+							"key": "appid",
+							"value": "b6907d289e10d714a6e88b30761fae22\n"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
